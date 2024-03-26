@@ -1,81 +1,40 @@
 <template>
   <v-row justify="center">
-    <v-col cols="auto">
-      <v-img src="Image-1.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹100</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-2.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹150</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-3.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹200</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-4.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹250</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-5.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹300</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-6.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹350</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-7.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹400</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-8.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹450</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-9.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹500</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-10.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹550</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-11.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹600</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-12.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹650</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-13.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹700</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-14.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹750</p>
-    </v-col>
-
-    <v-col cols="auto">
-      <v-img src="Image-15.jpg" contain width="300" height="300"></v-img>
-      <p class="price white--text">₹800</p>
+    <v-col v-for="(item, index) in products" :key="index" cols="auto">
+      <v-img :src="item.image" contain width="300" height="300"></v-img>
+      <p class="price white--text">₹ {{ item.price }}</p>
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  name: "BrivaEnterprise",
+  computed: {
+    products() {
+      const defaultPrice = 1200;
+      return [
+        { image: "Image-1.jpg", price: defaultPrice },
+        { image: "Image-2.jpg", price: defaultPrice },
+        { image: "Image-3.jpg", price: defaultPrice },
+        { image: "Image-4.jpg", price: defaultPrice },
+        { image: "Image-5.jpg", price: defaultPrice },
+        { image: "Image-6.jpg", price: defaultPrice },
+        { image: "Image-7.jpg", price: defaultPrice },
+        { image: "Image-8.jpg", price: defaultPrice },
+        { image: "Image-9.jpg", price: defaultPrice },
+        { image: "Image-10.jpg", price: defaultPrice },
+        { image: "Image-11.jpg", price: defaultPrice },
+        { image: "Image-12.jpg", price: defaultPrice },
+        { image: "Image-13.jpg", price: defaultPrice },
+        { image: "Image-14.jpg", price: defaultPrice },
+        { image: "Image-15.jpg", price: defaultPrice }
+      ];
+    }
+  }
+
+}
+</script>
 
 <style scoped>
 .price {
