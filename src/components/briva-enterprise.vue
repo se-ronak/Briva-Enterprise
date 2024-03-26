@@ -4,14 +4,10 @@
       <v-toolbar dark color="primary">
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn :class="{ 'highlighted-btn': isHomePage }" text @click="navigateToPage('home')"
-            min-width="64">Home</v-btn>
-          <v-btn :class="{ 'highlighted-btn': isShopPage }" text @click="navigateToPage('shop')"
-            min-width="64">Shop</v-btn>
-          <v-btn :class="{ 'highlighted-btn': isAboutPage }" text @click="navigateToPage('about')" min-width="64">About
-            Us</v-btn>
-          <v-btn :class="{ 'highlighted-btn': isContactPage }" text @click="navigateToPage('contact')"
-            min-width="64">Contact</v-btn>
+          <v-btn :class="{ 'highlighted-btn': isHomePage }" text @click="navigateToPage('home')">Home</v-btn>
+          <v-btn :class="{ 'highlighted-btn': isShopPage }" text @click="navigateToPage('shop')">Shop</v-btn>
+          <v-btn :class="{ 'highlighted-btn': isAboutPage }" text @click="navigateToPage('about')">About Us</v-btn>
+          <v-btn :class="{ 'highlighted-btn': isContactPage }" text @click="navigateToPage('contact')">Contact</v-btn>
         </v-toolbar-items>
       </v-toolbar>
     </v-row>
@@ -24,7 +20,7 @@
         </p>
       </v-col>
       <v-col cols="12" class="d-flex justify-center">
-        <v-img src="briva-logo.io.png" contain height="350"></v-img>
+        <v-img src="briva-logo.io.png" contain height="300"></v-img>
       </v-col>
     </v-row>
 
@@ -160,5 +156,9 @@ export default {
 .highlighted-btn {
   background-color: #03a9f4;
   color: #ffffff;
+}
+
+.v-btn:not(.v-btn--round).v-size--default {
+  padding: 0 10px;
 }
 </style>
