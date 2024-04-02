@@ -1,16 +1,43 @@
 <template>
   <v-container fluid>
-    <v-row>
-      <v-toolbar dark color="primary">
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-btn :class="{ 'highlighted-btn': isHomePage }" text @click="navigateToPage('home')">Home</v-btn>
-          <v-btn :class="{ 'highlighted-btn': isShopPage }" text @click="navigateToPage('shop')">Shop</v-btn>
-          <v-btn :class="{ 'highlighted-btn': isAboutPage }" text @click="navigateToPage('about')">About Us</v-btn>
-          <v-btn :class="{ 'highlighted-btn': isContactPage }" text @click="navigateToPage('contact')">Contact</v-btn>
-        </v-toolbar-items>
-      </v-toolbar>
-    </v-row>
+    <v-app-bar app color="primary" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Briva Enterprise</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-img src="briva-logo.io.png" height="40" max-width="40"></v-img>
+    </v-app-bar>
+
+    <!-- Navigation Drawer -->
+    <v-navigation-drawer v-model="drawer" app color="primary lighten-1">
+      <v-list dense>
+        <v-list-item @click="navigateToPage('home')">
+          <v-list-item-icon>
+            <v-icon color="white">mdi-home</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content class="white--text">Home</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="navigateToPage('shop')">
+          <v-list-item-icon>
+            <v-icon color="white">mdi-cart</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content class="white--text">Shop</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="navigateToPage('about')">
+          <v-list-item-icon>
+            <v-icon color="white">mdi-information</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content class="white--text">About Us</v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="navigateToPage('contact')">
+          <v-list-item-icon>
+            <v-icon color="white">mdi-email</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content class="white--text">Contact</v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+
 
     <v-row v-if="isHomePage">
       <v-col cols="12" class="text-center">
@@ -18,9 +45,6 @@
         <p class="subtitle-1 white--text">
           Your one-stop shop for all your needs!
         </p>
-      </v-col>
-      <v-col cols="12" class="d-flex justify-center">
-        <v-img src="briva-logo.io.png" contain height="300"></v-img>
       </v-col>
     </v-row>
 
@@ -99,6 +123,7 @@ export default {
       isShopPage: false,
       isAboutPage: false,
       isContactPage: false,
+      drawer: false,
     };
   },
   computed: {
