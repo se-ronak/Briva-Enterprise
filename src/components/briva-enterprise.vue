@@ -7,28 +7,31 @@
       <v-img src="briva-logo.io.png" height="40" max-width="40"></v-img>
     </v-app-bar>
 
-    <!-- Navigation Drawer -->
     <v-navigation-drawer v-model="drawer" app color="primary lighten-1">
+      <v-list-item>
+        <v-list-item-title class="white--text mt-4">Briva Marketplace</v-list-item-title>
+      </v-list-item>
+      <v-divider class="mt-4"></v-divider>
       <v-list dense>
-        <v-list-item @click="navigateToPage('home')">
+        <v-list-item @click="navigateToPage('home'), drawer = false">
           <v-list-item-icon>
             <v-icon color="white">mdi-home</v-icon>
           </v-list-item-icon>
           <v-list-item-content class="white--text">Home</v-list-item-content>
         </v-list-item>
-        <v-list-item @click="navigateToPage('shop')">
+        <v-list-item @click="navigateToPage('shop'), drawer = false">
           <v-list-item-icon>
             <v-icon color="white">mdi-cart</v-icon>
           </v-list-item-icon>
           <v-list-item-content class="white--text">Shop</v-list-item-content>
         </v-list-item>
-        <v-list-item @click="navigateToPage('about')">
+        <v-list-item @click="navigateToPage('about', drawer = false)">
           <v-list-item-icon>
             <v-icon color="white">mdi-information</v-icon>
           </v-list-item-icon>
           <v-list-item-content class="white--text">About Us</v-list-item-content>
         </v-list-item>
-        <v-list-item @click="navigateToPage('contact')">
+        <v-list-item @click="navigateToPage('contact'), drawer = false">
           <v-list-item-icon>
             <v-icon color="white">mdi-email</v-icon>
           </v-list-item-icon>
@@ -37,8 +40,6 @@
       </v-list>
     </v-navigation-drawer>
 
-
-
     <v-row v-if="isHomePage">
       <v-col cols="12" class="text-center">
         <h1 class="display-2 white--text">Welcome To Briva Enterprise</h1>
@@ -46,6 +47,8 @@
           Your one-stop shop for all your needs!
         </p>
       </v-col>
+      <v-img src="shopping-1.jpg" contain width="300" height="300"></v-img>
+      <v-img src="shopping-2.jpg" contain width="300" height="300"></v-img>
     </v-row>
 
     <v-row v-if="isShopPage">
