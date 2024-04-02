@@ -40,12 +40,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-row v-if="isHomePage">
-      <v-col cols="12" class="text-center">
-        <h1 class="display-2 white--text">Welcome To Briva Enterprise</h1>
-        <p class="subtitle-1 white--text">
-          Your one-stop shop for all your needs!
-        </p>
+    <v-row v-if="isHomePage" class="text-center">
+      <v-col cols="12">
+        <h2 class="white--text jump-continuous">Welcome To Briva Enterprise</h2>
+        <p class="subtitle-1 white--text">Your one-stop shop for all your needs!</p>
       </v-col>
       <v-img src="shopping-1.jpg" contain width="300" height="300"></v-img>
       <v-img src="shopping-2.jpg" contain width="300" height="300"></v-img>
@@ -53,7 +51,7 @@
 
     <v-row v-if="isShopPage">
       <v-col cols="12" class="text-center">
-        <h1 class="display-2 white--text">Shop Page</h1>
+        <h2 class="white--text jump-continuous">Shop Page</h2>
         <p class="subtitle-1 white--text">Explore our products!</p>
         <BrivaProducts></BrivaProducts>
       </v-col>
@@ -61,7 +59,7 @@
 
     <v-row v-if="isAboutPage">
       <v-col cols="12" class="text-center">
-        <h1 class="display-2 white--text">About Us</h1>
+        <h2 class="white--text jump-continuous">About Us</h2>
         <p class="subtitle-1 white--text">Learn more about our company.</p>
         <p class="white--text">
           Briva Enterprise is a leading provider of innovative solutions in the
@@ -76,7 +74,7 @@
 
     <v-row v-if="isContactPage">
       <v-col cols="12" class="text-center">
-        <h1 class="display-2 white--text">Contact Us</h1>
+        <h2 class="white--text jump-continuous">Contact Us</h2>
         <p class="subtitle-1 white--text">Reach out to us for any inquiries.</p>
         <p class="white--text">
           For any questions, feedback, or inquiries, feel free to contact us
@@ -153,12 +151,6 @@ export default {
   color: white;
 }
 
-.display-2 {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
 .subtitle-1 {
   font-size: 1.2rem;
   margin-top: 10px;
@@ -188,5 +180,19 @@ export default {
 
 .v-btn:not(.v-btn--round).v-size--default {
   padding: 0 10px;
+}
+
+.jump-continuous {
+  animation: jump 0.5s infinite alternate;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
 }
 </style>
