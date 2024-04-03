@@ -37,6 +37,12 @@
           </v-list-item-icon>
           <v-list-item-content class="white--text">Contact</v-list-item-content>
         </v-list-item>
+        <v-list-item v-if="isAllowedToAddItem" @click="navigateToPage('addItem'), drawer = false">
+          <v-list-item-icon>
+            <v-icon color="white">mdi-plus</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content class="white--text">Add Item</v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -116,6 +122,7 @@
 
 <script>
 import BrivaProducts from "./briva-products.vue";
+import axios from 'axios';
 export default {
   name: "BrivaEnterprise",
   data() {
@@ -124,7 +131,9 @@ export default {
       isShopPage: false,
       isAboutPage: false,
       isContactPage: false,
+      isAddItem: false,
       drawer: false,
+      allowedIPs: ["180.151.44.182"],
     };
   },
   computed: {
@@ -138,7 +147,21 @@ export default {
       this.isShopPage = page === "shop";
       this.isAboutPage = page === "about";
       this.isContactPage = page === "contact";
+      this.isAddItem = page === "addItem";
     },
+    async isAllowedToAddItem() {
+      const userIP = await this.fetchUserIP();
+      return this.allowedIPs.includes(userIP);
+    },
+    async fetchUserIP() {
+      try {
+        const response = await axios.get('https://api.ipify.org?format=json');
+        this.userIP = response.data.ip;
+        return this.userIP;
+      } catch (error) {
+        console.error('Error fetching user IP:', error);
+      }
+    }
   },
   components: {
     BrivaProducts,
