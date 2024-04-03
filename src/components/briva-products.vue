@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "BrivaEnterprise",
+  name: "BrivaProducts",
   computed: {
     products() {
       const defaultPrice = 1200;

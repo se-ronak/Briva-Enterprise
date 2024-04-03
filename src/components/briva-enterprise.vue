@@ -109,6 +109,10 @@
       </template>
     </v-row>
 
+    <v-row v-if="isAddItem">
+      <add-new-briva-products></add-new-briva-products>
+    </v-row>
+
     <v-footer class="mt-5" app dark color="primary">
       <v-row justify="center">
         <v-col cols="12" class="text-center white--text">
@@ -122,9 +126,15 @@
 
 <script>
 import BrivaProducts from "./briva-products.vue";
+import AddNewBrivaProducts from "./add-new-briva-product.vue";
 import axios from 'axios';
+
 export default {
   name: "BrivaEnterprise",
+  async created() {
+    const userIP = await this.fetchUserIP();
+    this.isAllowedToAddItem = this.allowedIPs.includes(userIP);
+  },
   data() {
     return {
       isHomePage: true,
@@ -133,7 +143,8 @@ export default {
       isContactPage: false,
       isAddItem: false,
       drawer: false,
-      allowedIPs: ["180.151.44.182"],
+      allowedIPs: ["192.168.4.103"],
+      isAllowedToAddItem: false,
     };
   },
   computed: {
@@ -149,25 +160,23 @@ export default {
       this.isContactPage = page === "contact";
       this.isAddItem = page === "addItem";
     },
-    async isAllowedToAddItem() {
-      const userIP = await this.fetchUserIP();
-      return this.allowedIPs.includes(userIP);
-    },
     async fetchUserIP() {
       try {
         const response = await axios.get('https://api.ipify.org?format=json');
-        this.userIP = response.data.ip;
-        return this.userIP;
+        return response.data.ip;
       } catch (error) {
         console.error('Error fetching user IP:', error);
+        return null;
       }
     }
   },
   components: {
     BrivaProducts,
+    AddNewBrivaProducts
   },
 };
 </script>
+
 
 <style scoped>
 .white--text {
